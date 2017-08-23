@@ -1,0 +1,22 @@
+<h2>My Beaches</h2>
+<div>
+  <label>Beach name:</label> <input #beachName />
+  <button (click)="add(beachName.value); beachName.value=''">
+    Add
+  </button>
+</div>
+<ul class="beaches">
+    <li *ngFor="let beach of beaches" 
+    [class.selected]="beach === selectedBeach"
+    (click)="onSelect(beach)">
+    <span class="badge">{{beach.id}}</span> 
+    <span> {{beach.name}} </span>
+    <button class="delete" (click)="delete(beach); $event.stopPropagation()">x</button>
+    </li>
+</ul>
+<div *ngIf="selectedBeach">
+    <h2>
+    {{selectedBeach.name | uppercase}} is my beach
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+</div>

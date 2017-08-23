@@ -1,0 +1,9 @@
+<h3>Top Beaches</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let beach of beaches"  [routerLink]="['/detail', beach.id]"  class="col-1-4">
+    <div class="module beach">
+      <h4>{{beach.name}}</h4>
+    </div>
+  </a>
+</div>
+<beach-search></beach-search>

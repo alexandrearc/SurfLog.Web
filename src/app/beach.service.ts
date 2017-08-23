@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
-import 'rxjs/add/operator/toPromise'
+//import 'rxjs/add/operator/toPromise'
 
 import { Beach } from './beach';
 import { BEACHES } from './mock-beaches';
+import { Observable } from "rxjs";
+
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class BeachService {
@@ -18,18 +21,13 @@ export class BeachService {
         return Promise.resolve(BEACHES);
     } 
     
-    getBeach(id: number): Promise<Beach> {
+    getBeach(id: number): Observable<Beach> {
         const url = `${this.beachesUrl}/${id}`;
         return this.http.get(url)
-        .toPromise()
-        .then(
-            function (response) {
-                console.log(response);
-                return response => response.json() as Beach
-            }
-        )
-        .catch(this.handleError);
-    }
+                        .map((data: any) => data.json())
+                        .map(({id, name}) => new Beach(id, name))
+                        .catch((error:any) => Observable.throw('Server error'));
+    }   
 
     update(beach: Beach): Promise<Beach> {
         const url = `${this.beachesUrl}/${beach.id}`;

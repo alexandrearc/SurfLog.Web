@@ -24,7 +24,7 @@ export class BeachDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap
         .switchMap((params: ParamMap) => this.beachService.getBeach(+params.get('id')))
-        .subscribe(beach => this.beach = beach);
+        .subscribe(data => this.beach = data);
   }
     
   @Input() beach: Beach;

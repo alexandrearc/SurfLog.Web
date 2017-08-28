@@ -15,6 +15,6 @@ export class DashboardComponent {
 
     ngOnInit(): void {
         this.beachService.getBeaches()
-            .then(beaches => this.beaches =  beaches.slice(1,5))
+            .subscribe(beaches => this.beaches = beaches)
     }
  }

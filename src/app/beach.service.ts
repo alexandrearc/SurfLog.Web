@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-
-//import 'rxjs/add/operator/toPromise'
+import { Observable } from "rxjs";
 
 import { Beach } from './beach';
 import { BEACHES } from './mock-beaches';
-import { Observable } from "rxjs";
 
 import 'rxjs/add/operator/map';
 
@@ -17,9 +15,18 @@ export class BeachService {
 
     constructor(private http: Http){}
 
-    getBeaches(): Promise<Beach[]> {
-        return Promise.resolve(BEACHES);
-    } 
+    getBeaches(): Observable<Beach[]> {
+        const url = `${this.beachesUrl}`;
+        return this.http.get(url)
+        .map(res => { 
+            return res.json().map(item => { 
+              return new Beach( 
+                  item.id,
+                  item.name
+              );
+            });
+          });
+    }   
     
     getBeach(id: number): Observable<Beach> {
         const url = `${this.beachesUrl}/${id}`;

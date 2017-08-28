@@ -26,7 +26,8 @@ export class BeachesComponent implements OnInit {
   }
 
   getBeaches(): void {
-    this.beachService.getBeaches().then(beaches => this.beaches = beaches);
+    this.beachService.getBeaches()
+                     .subscribe(beaches => this.beaches = beaches);
   }
 
   onSelect(beach: Beach): void {

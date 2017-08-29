@@ -42,7 +42,7 @@ export class BeachesComponent implements OnInit {
     name = name.trim();
     if (!name) { return; }
     this.beachService.create(name)
-      .then(beach => {
+      .subscribe(beach => {
         this.beaches.push(beach);
         this.selectedBeach = null;
       });
@@ -51,7 +51,7 @@ export class BeachesComponent implements OnInit {
   delete(beach: Beach): void {
     this.beachService
         .delete(beach.id)
-        .then(() => {
+        .subscribe(() => {
           this.beaches = this.beaches.filter(h => h !== beach);
           if (this.selectedBeach === beach) { this.selectedBeach = null; }
         });

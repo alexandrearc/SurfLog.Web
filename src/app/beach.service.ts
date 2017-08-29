@@ -36,28 +36,24 @@ export class BeachService {
                         .catch((error:any) => Observable.throw('Server error'));
     }   
 
-    update(beach: Beach): Promise<Beach> {
+    update(beach: Beach): Observable<Beach> {
         const url = `${this.beachesUrl}/${beach.id}`;
         return this.http
         .put(url, JSON.stringify(beach), {headers: this.headers})
-        .toPromise()
-        .then(() => beach)
         .catch(this.handleError);
     }
 
-    create(name: string): Promise<Beach> {
+    create(name: string): Observable<Beach> {
         return this.http
             .post(this.beachesUrl, JSON.stringify({name: name}), {headers: this.headers})
-            .toPromise()
-            .then(res => res.json().data as Beach)
+            .map((data: any) => data.json())
+            .map(({id, name}) => new Beach(id, name))
             .catch(this.handleError);
     }
     
-    delete(id: number): Promise<void> {
+    delete(id: number): Observable<void> {
         const url = `${this.beachesUrl}/${id}`;
         return this.http.delete(url, {headers: this.headers})
-        .toPromise()
-        .then(() => null)
         .catch(this.handleError);
     }
     

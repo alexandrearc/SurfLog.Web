@@ -34,7 +34,7 @@ export class BeachDetailComponent implements OnInit {
   }
 
   save(): void {
-  this.beachService.update(this.beach)
-    .then(() => this.goBack());
-}
+    this.beachService.update(this.beach)
+                     .subscribe(() => this.goBack());
+  }
 }

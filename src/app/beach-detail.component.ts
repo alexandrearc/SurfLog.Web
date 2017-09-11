@@ -5,7 +5,7 @@ import { Location }                 from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
 import { Beach } from './model/beach';
-import { BeachService } from './beach.service'
+import { BeachService } from './service/beach.service'
 
 @Component({
   selector: 'beach-detail',

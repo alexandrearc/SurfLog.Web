@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Beach } from './model/beach';
-import { BeachService } from './beach.service';
+import { BeachService } from './service/beach.service';
 
 @Component({
   selector: 'my-beaches',

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Observable } from "rxjs";
 
-import { Login } from "./model/login";
-import { User } from "./model/user";
+import { Login } from "../model/login";
+import { User } from "../model/user";
 
 @Injectable()
 export class AuthService {

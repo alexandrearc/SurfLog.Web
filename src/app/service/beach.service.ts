@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Observable } from "rxjs";
 
-import { Beach } from './model/beach';
-import { BEACHES } from './mock-beaches';
+import { Beach } from '../model/beach';
+import { BEACHES } from '../mock-beaches';
 
 import 'rxjs/add/operator/map';
 

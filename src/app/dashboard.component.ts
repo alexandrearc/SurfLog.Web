@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Beach } from './model/beach'
-import { BeachService } from './beach.service';
+import { BeachService } from './service/beach.service';
 
 @Component({
   selector: 'my-dashboard',

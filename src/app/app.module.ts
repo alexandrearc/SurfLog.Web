@@ -12,8 +12,8 @@ import { DashboardComponent } from './dashboard.component';
 import { BeachSearchComponent} from './beach-search.component';
 import { LoginComponent} from './login.component';
 
-import { AuthService } from "./auth.service";
-import { BeachService } from './beach.service';
+import { AuthService } from "./service/auth.service";
+import { BeachService } from './service/beach.service';
 
 @NgModule({
   declarations: [

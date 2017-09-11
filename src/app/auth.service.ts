@@ -3,6 +3,7 @@ import { Headers, Http } from '@angular/http';
 import { Observable } from "rxjs";
 
 import { Login } from "./login";
+import { User } from "./user";
 
 @Injectable()
 export class AuthService {
@@ -12,10 +13,15 @@ export class AuthService {
 
     constructor (private http: Http){};
 
-    login(login: Login): Observable<Login> {
+    login(login: Login): Observable<User> {
         return this.http
             .post(this.authUrl, JSON.stringify(login), {headers: this.headers})
-            //.map((data: any) => data.json())
+            .map((data: any) => {
+                let user = data.json();
+                if(user){
+                    localStorage.setItem('currentUser', JSON.stringify(user))
+                }
+            })
             .catch(this.handleError);
     }
 

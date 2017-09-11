@@ -13,7 +13,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 import { BeachSearchService } from './beach-search.service';
-import { Beach } from './beach';
+import { Beach } from './model/beach';
 
 @Component({
   selector: 'beach-search',

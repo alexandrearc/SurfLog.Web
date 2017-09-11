@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Beach } from './beach';
+import { Beach } from './model/beach';
 import { BeachService } from './beach.service';
 
 @Component({

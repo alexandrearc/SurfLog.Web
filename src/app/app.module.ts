@@ -5,16 +5,15 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
-// Imports for loading & configuring the in-memory web api
-//import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-//import { InMemoryDataService }  from './in-memory-data.service';
-
 import { AppComponent } from './app.component';
 import { BeachDetailComponent } from './beach-detail.component';
 import { BeachesComponent } from './beaches.component';
 import { DashboardComponent } from './dashboard.component';
-import { BeachService } from './beach.service';
 import { BeachSearchComponent} from './beach-search.component';
+import { LoginComponent} from './login.component';
+
+import { AuthService } from "./auth.service";
+import { BeachService } from './beach.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,8 @@ import { BeachSearchComponent} from './beach-search.component';
     DashboardComponent,
     BeachDetailComponent,
     BeachesComponent,
-    BeachSearchComponent
+    BeachSearchComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +34,8 @@ import { BeachSearchComponent} from './beach-search.component';
     AppRoutingModule
   ],
   providers: [
-    BeachService
+    BeachService,
+    AuthService
   ],
   bootstrap: [ AppComponent ]
 })

@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs/Observable';
 
-import { Login } from "../model/login";
-import { User } from "../model/user";
+import { Login } from '../model/login';
+import { User } from '../model/user';
 
 @Injectable()
 export class AuthService {
 
-    private authUrl = 'api/auth'
+    private authUrl = 'api/auth';
     private headers = new Headers({'Content-Type': 'application/json'});
 
-    constructor (private http: Http){};
+    constructor (private http: Http) {}
 
     login(login: Login): Observable<User> {
         return this.http
             .post(this.authUrl, JSON.stringify(login), {headers: this.headers})
             .map((data: any) => {
                 let user = data.json();
-                if(user){
-                    localStorage.setItem('currentUser', JSON.stringify(user))
+                if (user) {
+                    localStorage.setItem('currentUser', JSON.stringify(user));
                 }
             })
             .catch(this.handleError);

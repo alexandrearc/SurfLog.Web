@@ -13,7 +13,7 @@ import { DashboardComponent } from './dashboard.component';
 import { HomeComponent } from './home.component';
 import { LoginComponent} from './login.component';
 
-import { AuthService } from "./service/auth.service";
+import { AuthService } from './service/auth.service';
 import { BeachService } from './service/beach.service';
 import { AuthGuard } from './guard/auth.guard';
 import { UserService } from './service/user.service';

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { AuthService } from "./service/auth.service";
-import { Login } from "./model/login";
+import { AuthService } from './service/auth.service';
+import { Login } from './model/login';
 
 @Component({
     selector: 'login',
@@ -10,7 +10,7 @@ import { Login } from "./model/login";
 })
 
 export class LoginComponent implements OnInit {
-    login: any = {}
+    login: any = {};
     returnUrl: string;
 
     constructor(

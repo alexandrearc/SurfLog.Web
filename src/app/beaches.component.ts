@@ -12,13 +12,13 @@ import { BeachService } from './service/beach.service';
 )
 
 export class BeachesComponent implements OnInit {
- 
+
   selectedBeach: Beach;
   beaches: Beach[];
 
   constructor(
     private router: Router,
-    private beachService: BeachService) { 
+    private beachService: BeachService) {
   }
 
   ngOnInit(): void {

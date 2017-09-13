@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http }       from '@angular/http';
+import { Http } from '@angular/http';
 
-import { Observable }     from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { Beach }           from '../model//beach';
+import { Beach } from '../model//beach';
 
 @Injectable()
 export class BeachSearchService {

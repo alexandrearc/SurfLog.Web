@@ -15,14 +15,14 @@ export class RegisterComponent implements OnInit {
     constructor(private router: Router,
                 private userService: UserService) { }
 
-    ngOnInit() { } 
+    ngOnInit() {}
 
-    register(){
+    register() {
         this.userService.register(this.user)
                         .subscribe(
                             data => {
                                 this.router.navigate(['/login']);
                             }
-                        )
+                        );
     }
 }

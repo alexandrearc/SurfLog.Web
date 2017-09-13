@@ -5,13 +5,18 @@ import { BeachesComponent }     from './beaches.component';
 import { BeachDetailComponent } from './beach-detail.component';
 import { DashboardComponent }   from './dashboard.component';
 import { LoginComponent }       from "./login.component";
+import { AuthGuard }            from './guard/auth.guard';
+import { HomeComponent }        from './home.component';
+import { AppComponent }         from './app.component';
+import { RegisterComponent }    from './register.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard',  component: DashboardComponent },
+  { path: '',  component: HomeComponent},
   { path: 'detail/:id', component: BeachDetailComponent },
   { path: 'beaches',    component: BeachesComponent },
-  { path: 'login',      component: LoginComponent }
+  { path: 'login',      component: LoginComponent },
+  { path: 'dashboard',  component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({

@@ -1,3 +1,8 @@
-<input type="text" [(ngModel)]="login.username" placeholder="username"/>
-<input type="password" [(ngModel)]="login.password" placeholder="password"/>
-<button (click)="loginUser()">Login</button>
+
+<md-form-field> 
+    <input mdInput type="text" placeholder="Username" [(ngModel)]="login.username"/>
+</md-form-field> 
+<md-form-field> 
+    <input mdInput type="password" placeholder="Password" [(ngModel)]="login.password"/>
+</md-form-field> 
+<button md-raised-button (click)="loginUser()">Login</button>

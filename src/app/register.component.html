@@ -14,9 +14,9 @@
         <md-form-field> 
             <input mdInput type="password" name="password" placeholder="Password" [(ngModel)]="user.password" #password="ngModel" required />
         </md-form-field>        
-        <div class="form-group">
-            <button md-raised-button>Register</button>
-            <button md-raised-button [routerLink]="['']" >Cancel</button>
+        <div class="button-row">
+            <button color="primary" md-raised-button>Register</button>
+            <a md-raised-button [routerLink]="['']" >Cancel</a>
         </div>
     </form>
 </div>

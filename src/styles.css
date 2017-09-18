@@ -2,5 +2,10 @@
 
 body {
   padding: 2em 23em;
-  background:lightgray;
+  background:white;
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
 }

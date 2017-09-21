@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 import { Beach } from '../model/beach';
-
-import 'rxjs/add/operator/map';
 
 @Injectable()
 export class BeachService {

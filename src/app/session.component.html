@@ -1,0 +1,23 @@
+<div>
+    <h2>Session</h2>
+    <form name="form" (ngSubmit)="f.form.valid && create()" #f="ngForm" novalidate>
+        <md-form-field>
+            <input mdInput [mdDatepicker]="picker"  name="date" placeholder="Date" [(ngModel)]="session.date" #date="ngModel"/>
+            <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+            <md-datepicker #picker></md-datepicker>
+        </md-form-field> 
+        <md-form-field> 
+            <textarea mdInput type="text" name="description" placeholder="Description" [(ngModel)]="session.description" #description="ngModel"></textarea>
+        </md-form-field> 
+        <md-form-field> 
+            <input mdInput type="number" name="duration" placeholder="Duration" [(ngModel)]="session.duration" #duration="ngModel"/>
+        </md-form-field> 
+        <md-form-field> 
+            <input mdInput type="number" name="rating"  placeholder="Rating" [(ngModel)]="session.rating" #rating="ngModel"/>      
+        </md-form-field> 
+        <div class="button-row">
+            <button color="primary" md-raised-button>Save</button>
+            <a md-raised-button [routerLink]="['/dashboard']" >Cancel</a>
+        </div>
+    </form>
+</div>

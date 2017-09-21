@@ -23,7 +23,6 @@ export class DashboardComponent {
             .subscribe(beaches => this.beaches = beaches);
 
          // reset login status
-         this.authService.logout();
+         //this.authService.logout();
     }
  }
- 

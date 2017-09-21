@@ -55,6 +55,13 @@ export class BeachService {
         .catch(this.handleError);
     }
 
+    search(term: string): Observable<Beach[]> {
+        const url = `${this.beachesUrl}/name/${term}`;
+        return this.http
+                   .get(url)
+                   .map(response => response.json().data as Beach[]);
+      }
+
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);

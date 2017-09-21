@@ -12,21 +12,20 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import { BeachSearchService } from './service/beach-search.service';
+import { BeachService } from './service/beach.service';
 import { Beach } from './model/beach';
 
 @Component({
   selector: 'beach-search',
   templateUrl: './beach-search.component.html',
   styleUrls: [ './beach-search.component.css' ],
-  providers: [BeachSearchService]
 })
 export class BeachSearchComponent implements OnInit {
   beaches: Observable<Beach[]>;
   private searchTerms = new Subject<string>();
 
   constructor(
-    private BeachSearchService: BeachSearchService,
+    private beachService: BeachService,
     private router: Router) {}
 
   // Push a search term into the observable stream.
@@ -40,7 +39,7 @@ export class BeachSearchComponent implements OnInit {
       .distinctUntilChanged()   // ignore if next search term is same as previous
       .switchMap(term => term   // switch to new observable each time the term changes
         // return the http search observable
-        ? this.BeachSearchService.search(term)
+        ? this.beachService.search(term)
         // or the observable of empty beaches if there was no search term
         : Observable.of<Beach[]>([]))
       .catch(error => {

@@ -1,6 +1,7 @@
 <div>
     <h2>Session</h2>
     <form name="form" (ngSubmit)="f.form.valid && create()" #f="ngForm" novalidate>
+        <beach-search></beach-search> 
         <md-form-field>
             <input mdInput [mdDatepicker]="picker"  name="date" placeholder="Date" [(ngModel)]="session.date" #date="ngModel"/>
             <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>

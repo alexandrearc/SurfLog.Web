@@ -59,7 +59,7 @@ export class BeachService {
         const url = `${this.beachesUrl}/name/${term}`;
         return this.http
                    .get(url)
-                   .map(response => response.json().data as Beach[]);
+                   .map(res => <Beach[]> res.json());
       }
 
     private handleError(error: any): Promise<any> {

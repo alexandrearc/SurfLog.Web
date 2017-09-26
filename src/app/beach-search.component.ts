@@ -22,31 +22,17 @@ import { Beach } from './model/beach';
 })
 export class BeachSearchComponent implements OnInit {
   beaches: Observable<Beach[]>;
-  private searchTerms = new Subject<string>();
 
   constructor(
     private beachService: BeachService,
-    private router: Router) {}
+    private router: Router) {
+    }
 
-  // Push a search term into the observable stream.
-  search(term: string): void {
-    this.searchTerms.next(term);
+  filterBeaches(val: string) {
+    return val ? this.beachService.search(val) : this.beaches;
   }
 
   ngOnInit(): void {
-    this.beaches = this.searchTerms
-      .debounceTime(300)        // wait 300ms after each keystroke before considering the term
-      .distinctUntilChanged()   // ignore if next search term is same as previous
-      .switchMap(term => term   // switch to new observable each time the term changes
-        // return the http search observable
-        ? this.beachService.search(term)
-        // or the observable of empty beaches if there was no search term
-        : Observable.of<Beach[]>([]))
-      .catch(error => {
-        // TODO: add real error handling
-        console.log(error);
-        return Observable.of<Beach[]>([]);
-      });
   }
 
   gotoDetail(beach: Beach): void {

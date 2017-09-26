@@ -1,10 +1,9 @@
-<div id="search-component">
-  <h4>Beach Search</h4>
-  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
-  <div>
-    <div *ngFor="let beach of beaches | async"
-         (click)="gotoDetail(beach)" class="search-result" >
-      {{beach.name}}
-    </div>
-  </div>
-</div>
+<md-form-field>
+  <input mdInput placeholder="Beach" aria-label="Beach" [mdAutocomplete]="tdAuto" [(ngModel)]="currentTerm"
+        (ngModelChange)="beaches = filterBeaches(currentTerm)">
+  <md-autocomplete #tdAuto="mdAutocomplete">
+    <md-option *ngFor="let beach of beaches | async" [value]="beach.name">
+    <span>{{ beach.name }}</span>
+    </md-option>
+  </md-autocomplete> 
+</md-form-field>

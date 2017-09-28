@@ -18,13 +18,7 @@ import { LoginComponent} from './login.component';
 import { RegisterComponent } from './register.component';
 import { SessionComponent } from './session.component';
 
-import { AuthService } from './service/auth.service';
-import { BeachService } from './service/beach.service';
-import { SessionService } from './service/session.service';
-import { UserService } from './service/user.service';
-
-import { AuthGuard } from './guard/auth.guard';
-
+import { APP_PROVIDERS } from './app.providers';
 
 @NgModule({
   declarations: [
@@ -49,11 +43,7 @@ import { AuthGuard } from './guard/auth.guard';
     MdNativeDateModule
   ],
   providers: [
-    BeachService,
-    AuthService,
-    AuthGuard,
-    SessionService,
-    UserService,
+    APP_PROVIDERS
   ],
   bootstrap: [ AppComponent ]
 })

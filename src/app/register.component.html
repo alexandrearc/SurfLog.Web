@@ -10,7 +10,9 @@
         <md-form-field> 
             <input mdInput type="text" name="username" placeholder="Username" [(ngModel)]="user.username" #username="ngModel" required />
         </md-form-field> 
-            <input mdInput type="email" name="email"  placeholder="Email" [(ngModel)]="user.email" #email="ngModel"/>
+        <md-form-field> 
+            <input mdInput type="email" name="email"  placeholder="Email" [(ngModel)]="user.email" #email="ngModel" required/>
+        </md-form-field> 
         <md-form-field> 
             <input mdInput type="password" name="password" placeholder="Password" [(ngModel)]="user.password" #password="ngModel" required />
         </md-form-field>        

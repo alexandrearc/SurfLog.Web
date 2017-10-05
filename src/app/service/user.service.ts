@@ -7,13 +7,20 @@ import { User } from '../model/user';
 @Injectable()
 export class UserService {
     private authUrl = 'api/user';
+    private userUrl = 'api/auth/register';
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) { }
 
     register(user: User): Observable<User> {
         return this.http
-            .post(this.authUrl, JSON.stringify(user), {headers: this.headers})
+            .post(this.userUrl, JSON.stringify(user), {headers: this.headers})
+            .map((data: any) => {
+                const currentUser = data.json();
+                if (currentUser) {
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                }
+            })
             .catch(this.handleError);
     }
 

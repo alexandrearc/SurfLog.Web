@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { UserService } from './service/user.service';
 
@@ -11,9 +11,13 @@ import { UserService } from './service/user.service';
 
 export class RegisterComponent implements OnInit {
     user: any = {};
+    returnUrl: string;
 
-    constructor(private router: Router,
-                private userService: UserService) { }
+    constructor(private userService: UserService,
+                private route: ActivatedRoute,
+                private router: Router) {
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
+    }
 
     ngOnInit() {}
 
@@ -21,7 +25,7 @@ export class RegisterComponent implements OnInit {
         this.userService.register(this.user)
                         .subscribe(
                             data => {
-                                this.router.navigate(['/login']);
+                                this.router.navigate([this.returnUrl]);
                             }
                         );
     }

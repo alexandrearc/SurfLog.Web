@@ -15,9 +15,9 @@ export class AuthService {
 
     login(login: Login): Observable<User> {
         return this.http
-            .post(this.authUrl, JSON.stringify(login), {headers: this.headers})
+            .post(this.authUrl + '/login', JSON.stringify(login), {headers: this.headers})
             .map((data: any) => {
-                let user = data.json();
+                const user = data.json();
                 if (user) {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }

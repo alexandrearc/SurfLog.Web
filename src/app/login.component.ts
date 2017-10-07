@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
         private router: Router ) { }
 
     ngOnInit() {
+        this.authService.logout();
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
     }
 

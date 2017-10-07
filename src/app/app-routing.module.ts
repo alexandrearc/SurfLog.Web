@@ -16,8 +16,8 @@ const routes: Routes = [
   { path: 'detail/:id', component: BeachDetailComponent },
   { path: 'beaches',    component: BeachesComponent },
   { path: 'login',      component: LoginComponent },
-  { path: 'dashboard',  component: DashboardComponent },
-  { path: 'session',  component: SessionComponent },
+  { path: 'dashboard',  component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'session',  component: SessionComponent, canActivate: [AuthGuard]},
   { path: 'register', component: RegisterComponent }
 ];
 

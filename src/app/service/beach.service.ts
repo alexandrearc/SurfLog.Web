@@ -37,8 +37,8 @@ export class BeachService {
     update(beach: Beach): Observable<Beach> {
         const url = `${this.beachesUrl}/${beach.id}`;
         return this.http
-        .put(url, JSON.stringify(beach), {headers: this.headers})
-        .catch(this.handleError);
+            .put(url, JSON.stringify(beach), {headers: this.headers})
+            .catch(this.handleError);
     }
 
     create(name: string): Observable<Beach> {
@@ -52,18 +52,19 @@ export class BeachService {
     delete(id: number): Observable<void> {
         const url = `${this.beachesUrl}/${id}`;
         return this.http.delete(url, {headers: this.headers})
-        .catch(this.handleError);
+            .catch(this.handleError);
     }
 
     search(term: string): Observable<Beach[]> {
         const url = `${this.beachesUrl}/name/${term}`;
         return this.http
-                   .get(url)
-                   .map(res => <Beach[]> res.json());
+                .get(url)
+                .map(res => <Beach[]> res.json())
+                ._catch(this.handleError);
       }
 
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
+    private handleError(error: any) {
+        console.error('An error occurred', error);
+        return Observable.throw(error.json().error || 'Server error');
     }
 }

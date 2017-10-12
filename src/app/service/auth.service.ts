@@ -30,8 +30,8 @@ export class AuthService {
         localStorage.removeItem('currentUser');
     }
 
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
+    private handleError(error: any) {
+        console.error('An error occurred', error);
+        return Observable.throw(error.json().error || 'Server error');
     }
 }

@@ -36,7 +36,8 @@ export class SessionService {
                   item.beachId
               );
             });
-          });
+          })
+          .catch(this.handleError);
     }
 
     create(session: Session): Observable<Session> {
@@ -46,6 +47,12 @@ export class SessionService {
 
         return this.http
             .post(this.sessionUrl, JSON.stringify(session), options)
-            .map((data: any) => data.json());
+            .map((data: any) => data.json())
+            .catch(this.handleError);
+    }
+
+    private handleError(error: any) {
+        console.error('An error occurred', error);
+        return Observable.throw(error.json().error || 'Server error');
     }
 }

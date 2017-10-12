@@ -14,6 +14,12 @@ export class BeachSearchService {
   search(term: string): Observable<Beach[]> {
     return this.http
                .get(`api/beaches/?name=${term}`)
-               .map(response => response.json().data as Beach[]);
+               .map(response => response.json().data as Beach[])
+               .catch(this.handleError);
   }
+
+  private handleError(error: any) {
+    console.error('An error occurred', error);
+    return Observable.throw(error.json().error || 'Server error');
+}
 }

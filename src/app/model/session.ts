@@ -1,4 +1,5 @@
 import { Beach } from './beach';
+import { Condition } from './condition';
 
 export class Session {
     id: string;
@@ -8,6 +9,7 @@ export class Session {
     rating: number;
     beachId: number;
     userId: number;
+    condition: Condition;
 
     constructor(id: string,
                 description: string,

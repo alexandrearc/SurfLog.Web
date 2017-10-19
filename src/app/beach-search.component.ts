@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input , OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
@@ -18,10 +18,13 @@ import { Beach } from './model/beach';
 @Component({
   selector: 'beach-search',
   templateUrl: './beach-search.component.html',
-  styleUrls: [ './beach-search.component.css' ],
+  styleUrls: [ './beach-search.component.css' ]
 })
 export class BeachSearchComponent implements OnInit {
+
   beaches: Observable<Beach[]>;
+
+  @Output() selectBeachEvent = new EventEmitter<number>();
 
   constructor(
     private beachService: BeachService,
@@ -35,8 +38,7 @@ export class BeachSearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  gotoDetail(beach: Beach): void {
-    let link = ['/detail', beach.id];
-    this.router.navigate(link);
+  select(beach: Beach): void {
+    this.selectBeachEvent.emit(beach.id);
   }
 }

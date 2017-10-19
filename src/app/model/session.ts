@@ -7,6 +7,7 @@ export class Session {
     description: string;
     duration: number;
     rating: number;
+    beach: Beach;
     beachId: number;
     userId: number;
     condition: Condition;
@@ -16,12 +17,12 @@ export class Session {
                 date: string,
                 duration: number,
                 rating: number,
-                beachId: number) {
+                beach: Beach) {
         this.id = id;
         this.description = name;
         this.date = date;
         this.duration = duration;
         this.rating = rating;
-        this.beachId = beachId;
+        this.beach = beach;
     }
 }

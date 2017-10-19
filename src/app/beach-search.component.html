@@ -2,7 +2,7 @@
   <input mdInput placeholder="Beach" aria-label="Beach" [mdAutocomplete]="tdAuto" [(ngModel)]="currentTerm"
         (ngModelChange)="beaches = filterBeaches(currentTerm)">
   <md-autocomplete #tdAuto="mdAutocomplete">
-    <md-option *ngFor="let beach of beaches | async" [value]="beach.name">
+    <md-option *ngFor="let beach of beaches | async" [value]="beach.name" (click)="select(beach)">
     <span>{{ beach.name }}</span>
     </md-option>
   </md-autocomplete> 

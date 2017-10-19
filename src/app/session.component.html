@@ -1,7 +1,7 @@
 <div>
     <h2>Session</h2>
     <form name="form" (ngSubmit)="f.form.valid && create()" #f="ngForm" novalidate>
-        <beach-search></beach-search> 
+        <beach-search (selectBeachEvent)="receiveSelectedBeach($event)"></beach-search> 
         <md-form-field>
             <input mdInput [mdDatepicker]="picker"  name="date" placeholder="Date" [(ngModel)]="session.date" #date="ngModel"/>
             <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
@@ -16,6 +16,39 @@
         <md-form-field> 
             <input mdInput type="number" name="rating"  placeholder="Rating" [(ngModel)]="session.rating" #rating="ngModel"/>      
         </md-form-field> 
+
+        <div>
+            <a md-raised-button (click)="addCondition()">
+              {{conditionLabel}}
+            </a>
+          </div>
+
+        <div *ngIf="showCondition">
+            <md-form-field> 
+                <input mdInput type="text" name="swell"  placeholder="Swell" [(ngModel)]="session.condition.swell" #swell="ngModel"/>      
+            </md-form-field> 
+
+            <md-form-field> 
+                <input mdInput type="number" name="angle"  placeholder="Angle" [(ngModel)]="session.condition.angle" #angle="ngModel"/>      
+            </md-form-field> 
+
+            <md-form-field> 
+                <input mdInput type="number" name="period"  placeholder="Period" [(ngModel)]="session.condition.period" #period="ngModel"/>      
+            </md-form-field> 
+
+            <md-form-field> 
+                <input mdInput type="text" name="wind"  placeholder="Wind" [(ngModel)]="session.condition.wind" #wind="ngModel"/>      
+            </md-form-field> 
+
+            <md-form-field> 
+                <input mdInput type="number" name="speed"  placeholder="Speed" [(ngModel)]="session.condition.rating" #speed="ngModel"/>      
+            </md-form-field>
+            
+            <md-form-field> 
+                <input mdInput type="number" name="score"  placeholder="Score" [(ngModel)]="session.condition.score" #score="ngModel"/>      
+            </md-form-field>
+        </div>
+
         <div class="button-row">
             <button color="primary" md-raised-button>Save</button>
             <a md-raised-button [routerLink]="['/dashboard']" >Cancel</a>

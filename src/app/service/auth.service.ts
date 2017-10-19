@@ -17,7 +17,7 @@ export class AuthService {
         return this.http
             .post(this.authUrl + '/login', JSON.stringify(login), {headers: this.headers})
             .map((data: any) => {
-                const user = data.json();
+                const user = data.json().result;
                 if (user) {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }

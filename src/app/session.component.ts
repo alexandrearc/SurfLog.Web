@@ -29,6 +29,7 @@ export class SessionComponent implements OnInit {
 
     create() {
         this.session.beach = new Beach(this.session.beachId, '');
+        this.session.beachId = this.session.beachId;
         this.sessionService.create(this.session)
                            .subscribe(
                                 data => {

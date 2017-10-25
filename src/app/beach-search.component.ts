@@ -18,7 +18,7 @@ import { Beach } from './model/beach';
 @Component({
   selector: 'beach-search',
   templateUrl: './beach-search.component.html',
-  styleUrls: [ './beach-search.component.css' ]
+  styleUrls: [ './beach-search.component.scss' ]
 })
 export class BeachSearchComponent implements OnInit {
 

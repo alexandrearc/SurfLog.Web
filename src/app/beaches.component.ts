@@ -7,7 +7,7 @@ import { BeachService } from './service/beach.service';
 @Component({
   selector: 'my-beaches',
   templateUrl: './beaches.component.html',
-  styleUrls: ['./beaches.component.css'],
+  styleUrls: ['./beaches.component.scss'],
   }
 )
 

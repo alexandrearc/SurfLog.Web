@@ -10,7 +10,7 @@ import { BeachService } from './service/beach.service';
 @Component({
   selector: 'beach-detail',
   templateUrl: 'beach-detail.component.html',
-  styleUrls: ['beach-detail.component.css']
+  styleUrls: ['beach-detail.component.scss']
 })
 
 export class BeachDetailComponent implements OnInit {

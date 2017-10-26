@@ -1,26 +1,27 @@
 import { Component } from '@angular/core';
 
 import { Beach } from './model/beach';
-import { BeachService } from './service/beach.service';
 import { User } from './model/user';
 import { AuthService } from './service/auth.service';
+import { SessionService } from './service/session.service';
+import { Session } from './model/session';
 
 @Component({
   selector: 'my-dashboard',
   templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent {
-    beaches: Beach[] = [];
+    sessions: Session[] = [];
     currentUser: User;
 
-    constructor(private beachService: BeachService,
-                private authService: AuthService) {
+    constructor(private authService: AuthService,
+                private sessionService: SessionService) {
                     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-                }
+    }
 
     ngOnInit(): void {
-        this.beachService.getBeaches()
-            .subscribe(beaches => this.beaches = beaches);
+        this.sessionService.getByUser(this.currentUser.id)
+            .subscribe(sessions => this.sessions = sessions);
 
          // reset login status
          // this.authService.logout();

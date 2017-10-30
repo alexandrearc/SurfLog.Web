@@ -34,7 +34,7 @@ export class SessionComponent implements OnInit {
                 this.isNew = true;
                 this.session.condition = new Condition();
             }else {
-                if (this.session.Condition !== null) {
+                if (this.session.Condition !== null && this.session.Condition !== undefined) {
                     this.showCondition = true;
                     this.conditionLabel = '- Condition';
                 }

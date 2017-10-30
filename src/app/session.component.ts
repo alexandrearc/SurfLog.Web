@@ -32,11 +32,12 @@ export class SessionComponent implements OnInit {
 
              if (this.session.id === undefined) {
                 this.isNew = true;
-                this.session.condition = new Condition();
             }else {
                 if (this.session.Condition !== null && this.session.Condition !== undefined) {
                     this.showCondition = true;
                     this.conditionLabel = '- Condition';
+                } else {
+                    this.session.condition = new Condition();
                 }
             }
         });

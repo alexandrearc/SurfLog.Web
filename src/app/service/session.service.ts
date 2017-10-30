@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-
 import { Headers, Http, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
 
 import { Session } from '../model/session';
 import { Beach } from '../model/beach';
@@ -18,21 +16,30 @@ export class SessionService {
         this.headers.append('Authorization', 'Bearer ' + currentUser.token);
     }
 
-    getByUser(id: number): Observable<Session[]> {
+    get(id: number): Observable<Session> {
+
+        const options = new RequestOptions({ headers: this.headers });
+        const url = `${this.sessionUrl}/${id}`;
+        return this.http.get(url, options)
+                        .map(response => response.json().result as Session)
+                        .catch((error: any) => Observable.throw('Server error'));
+    }
+
+    getByUser(id: string): Observable<Session[]> {
 
         // add authorization header with jwt token
         const options = new RequestOptions({ headers: this.headers });
-        const url = `${this.sessionUrl}user/${id}`;
+        const url = `${this.sessionUrl}/user/${id}`;
 
         return this.http.get(url, options)
         .map(res => {
-            return res.json().map(item => {
+            return res.json().result.map(item => {
               return new Session(
                   item.id,
                   item.description,
                   item.date,
                   item.duration,
-                  item.number,
+                  item.rating,
                   item.beachId
               );
             });
@@ -44,6 +51,18 @@ export class SessionService {
 
         // add authorization header with jwt token
         const options = new RequestOptions({ headers: this.headers });
+
+        return this.http
+            .post(this.sessionUrl, JSON.stringify(session), options)
+            .map((data: any) => data.json())
+            .catch(this.handleError);
+    }
+
+    update(session: Session): Observable<Session> {
+
+        // add authorization header with jwt token
+        const options = new RequestOptions({ headers: this.headers });
+        const updateUrl = `${this.sessionUrl}/${session.id}`;
 
         return this.http
             .post(this.sessionUrl, JSON.stringify(session), options)

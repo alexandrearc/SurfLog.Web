@@ -3,18 +3,18 @@ import { Condition } from './condition';
 
 export class Session {
     id: string;
-    date: string;
+    date: Date;
     description: string;
     duration: number;
     rating: number;
     beach: Beach;
     beachId: number;
-    userId: number;
+    userId: string;
     condition: Condition;
 
     constructor(id: string,
                 description: string,
-                date: string,
+                date: Date,
                 duration: number,
                 rating: number,
                 beach: Beach) {

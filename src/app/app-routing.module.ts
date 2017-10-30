@@ -13,7 +13,7 @@ import { SessionComponent }     from './session.component';
 
 const routes: Routes = [
   { path: '',  component: HomeComponent},
-  { path: 'detail/:id', component: BeachDetailComponent },
+  { path: 'session/:id', component: SessionComponent, canActivate: [AuthGuard]},
   { path: 'beaches',    component: BeachesComponent },
   { path: 'login',      component: LoginComponent },
   { path: 'dashboard',  component: DashboardComponent, canActivate: [AuthGuard] },

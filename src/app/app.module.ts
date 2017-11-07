@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -37,10 +39,11 @@ import { APP_PROVIDERS } from './app.providers';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    MaterialModule,
     BrowserAnimationsModule,
+    MaterialModule,
     MdDatepickerModule,
-    MdNativeDateModule
+    MdNativeDateModule,
+    FlexLayoutModule
   ],
   providers: [
     APP_PROVIDERS

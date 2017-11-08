@@ -1,6 +1,6 @@
-<div>
+<div fxLayout="column" fxLayoutAlign="center center">
     <h2>Session</h2>
-    <form name="form" (ngSubmit)="f.form.valid && submit()" #f="ngForm" novalidate>
+    <form name="form" (ngSubmit)="f.form.valid && submit()" #f="ngForm" novalidate fxLayout="column">
         <beach-search (selectBeachEvent)="receiveSelectedBeach($event)"></beach-search> 
         <md-form-field>
             <input mdInput [mdDatepicker]="picker"  name="date" placeholder="Date" [(ngModel)]="session.date" #date="ngModel"/>
@@ -21,9 +21,9 @@
             <a md-raised-button (click)="addCondition()">
               {{conditionLabel}}
             </a>
-          </div>
+        </div>
 
-        <div *ngIf="showCondition">
+        <div *ngIf="showCondition" fxLayout="column">
             <md-form-field> 
                 <input mdInput type="text" name="swell"  placeholder="Swell" [(ngModel)]="session.condition.swell" #swell="ngModel"/>      
             </md-form-field> 

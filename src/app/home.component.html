@@ -1,9 +1,14 @@
-<h1>
-    Welcome to SurfLog
-</h1>
-<nav>
-    <div flex>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <h1>
+        Welcome to SurfLog
+    </h1>
+</div>
+<div fxLayoutAlign="center center" fxLayout="column">
+    <div fxLayout="row">
         <a md-raised-button color="primary" routerLink="/login" routerLinkActive="active">Login</a>
-        <a md-raised-button color="primary" routerLink="/register" routerLinkActive="active">Register</a>
-    <div>
-<nav>
+    </div>
+    <div fxLayout="row">
+        <a md-raised-button color="secondary" routerLink="/register" routerLinkActive="active">Register</a>
+    </div>
+</div>
+

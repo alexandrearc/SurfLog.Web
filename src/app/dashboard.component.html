@@ -1,14 +1,16 @@
-<h1>Hi {{currentUser.userName}}!</h1>
-<nav>
-    <a md-raised-button color="primary" routerLink="/session">Session</a>
-    <a md-raised-button color="secondary" routerLink="/login">Logout</a>
-</nav>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <h1>Hi {{currentUser.userName}}!</h1>
+  <nav>
+      <a md-raised-button color="primary" routerLink="/session">Session</a>
+      <a md-raised-button color="secondary" routerLink="/login">Logout</a>
+  </nav>
 
-<h3>Sessions</h3>
-<div class="grid grid-pad">
-  <a *ngFor="let session of sessions" [routerLink]="['/session', session.id]">
-    <div class="module beach">
-      <h5>{{session.date}}</h5><h5>{{session.rating}}</h5>
-    </div>
-  </a>
+  <h3>Sessions</h3>
+  <div >
+    <a *ngFor="let session of sessions" [routerLink]="['/session', session.id]">
+      <div fxLayout="row">
+        <h5>{{session.date}}</h5><h5>{{session.rating}}</h5>
+      </div>
+    </a>
+  </div>
 </div>

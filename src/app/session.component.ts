@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 import { SessionService } from './service/session.service';
@@ -13,7 +13,9 @@ import { Session } from './model/session';
 })
 
 export class SessionComponent implements OnInit {
-    session: any = {};
+    @Input() session: Session;
+
+    // session: any = {};
     currentUser: User;
     showCondition: boolean;
     conditionLabel: string;
@@ -24,32 +26,18 @@ export class SessionComponent implements OnInit {
                 private sessionService: SessionService) { }
 
     ngOnInit() {
-        this.route.paramMap
-        .switchMap((params: ParamMap) => this.sessionService.get(+params.get('id')))
-        .subscribe(data => {
-             this.session = data;
-             this.session.date = this.parseStringToDate(data.date.toString());
-
-             if (this.session.id === undefined) {
-                this.isNew = true;
-            }else {
-                if (this.session.Condition !== null && this.session.Condition !== undefined) {
-                    this.showCondition = true;
-                    this.conditionLabel = '- Condition';
-                } else {
-                    this.session.condition = new Condition();
-                }
+        if (this.session === undefined) {
+            this.isNew = true;
+        } else {
+            if (this.session.condition !== null && this.session.condition !== undefined) {
+                this.showCondition = true;
+                this.conditionLabel = '- Condition';
+            } else {
+                this.session.condition = new Condition();
+                this.conditionLabel = '+ Condition';
+                this.showCondition = false;
             }
-        });
-
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.session.userId = this.currentUser.id;
-        this.conditionLabel = '+ Condition';
-     }
-
-     private parseStringToDate(date: string): Date {
-        const str: string[] = date.split('-');
-        return new Date(+str[0], +str[1], +str[2].slice(0, 2));
+        }
     }
 
     submit() {

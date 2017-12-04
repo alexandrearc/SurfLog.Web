@@ -19,6 +19,7 @@ import { HomeComponent } from './home.component';
 import { LoginComponent} from './login.component';
 import { RegisterComponent } from './register.component';
 import { SessionComponent } from './session.component';
+import { SessionContainerComponent } from './session-container/session-container.component';
 
 import { APP_PROVIDERS } from './app.providers';
 
@@ -32,7 +33,8 @@ import { APP_PROVIDERS } from './app.providers';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    SessionComponent
+    SessionComponent,
+    SessionContainerComponent
   ],
   imports: [
     BrowserModule,

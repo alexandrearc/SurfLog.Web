@@ -4,25 +4,26 @@ import { Observable } from 'rxjs/Observable';
 
 import { Session } from '../model/session';
 import { Beach } from '../model/beach';
+import { User } from '../model/user';
 
 @Injectable()
 export class SessionService {
 
     private sessionUrl = 'api/session';
     private headers = new Headers({'Content-Type': 'application/json'});
+    private currentUser: User;
 
     constructor(private http: Http) {
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.headers.append('Authorization', 'Bearer ' + currentUser.token);
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.headers.append('Authorization', 'Bearer ' + this.currentUser.token);
     }
 
     get(id: number): Observable<Session> {
-
         const options = new RequestOptions({ headers: this.headers });
         const url = `${this.sessionUrl}/${id}`;
         return this.http.get(url, options)
                         .map(response => response.json().result as Session)
-                        .catch((error: any) => Observable.throw('Server error'));
+                        .catch(this.handleError);
     }
 
     getByUser(id: string): Observable<Session[]> {
@@ -51,6 +52,9 @@ export class SessionService {
 
         // add authorization header with jwt token
         const options = new RequestOptions({ headers: this.headers });
+
+        // add userId
+        session.userId = this.currentUser.id;
 
         return this.http
             .post(this.sessionUrl, JSON.stringify(session), options)

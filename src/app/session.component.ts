@@ -16,19 +16,22 @@ export class SessionComponent implements OnInit {
     @Input() session: Session;
 
     // session: any = {};
+    currentBeach: Beach;
     currentUser: User;
     showCondition: boolean;
     conditionLabel: string;
-    isNew: boolean;
+    isNew = false;
 
     constructor(private router: Router,
                 private route: ActivatedRoute,
                 private sessionService: SessionService) { }
 
     ngOnInit() {
-        if (this.session === undefined) {
+        if (this.session.id === undefined) {
             this.isNew = true;
         } else {
+            this.currentBeach = this.session.beach;
+
             if (this.session.condition !== null && this.session.condition !== undefined) {
                 this.showCondition = true;
                 this.conditionLabel = '- Condition';

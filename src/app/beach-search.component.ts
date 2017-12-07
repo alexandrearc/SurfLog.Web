@@ -23,7 +23,9 @@ import { Beach } from './model/beach';
 export class BeachSearchComponent implements OnInit {
 
   beaches: Observable<Beach[]>;
+  currentTerm: string;
 
+  @Input() beach;
   @Output() selectBeachEvent = new EventEmitter<number>();
 
   constructor(
@@ -36,6 +38,10 @@ export class BeachSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.beach !== undefined) {
+      this.select(this.beach);
+      this.currentTerm = this.beach.name;
+    }
   }
 
   select(beach: Beach): void {

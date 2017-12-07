@@ -69,7 +69,7 @@ export class SessionService {
         const updateUrl = `${this.sessionUrl}/${session.id}`;
 
         return this.http
-            .post(this.sessionUrl, JSON.stringify(session), options)
+            .put(updateUrl, JSON.stringify(session), options)
             .map((data: any) => data.json())
             .catch(this.handleError);
     }

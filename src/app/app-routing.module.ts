@@ -11,11 +11,15 @@ import { AppComponent }         from './app.component';
 import { RegisterComponent }    from './register.component';
 import { SessionComponent }     from './session.component';
 import { SessionContainerComponent }   from './session-container/session-container.component';
+import { SessionResolve }       from './service/session.resolve';
 
 const routes: Routes = [
   { path: '',  component: HomeComponent},
   { path: 'session',  component: SessionContainerComponent, canActivate: [AuthGuard]},
-  { path: 'session/:id', component: SessionContainerComponent, canActivate: [AuthGuard]},
+  { path: 'session/:id', component: SessionContainerComponent,
+                         canActivate: [AuthGuard],
+                         resolve: { session: SessionResolve }
+  },
   { path: 'beaches',    component: BeachesComponent },
   { path: 'login',      component: LoginComponent },
   { path: 'dashboard',  component: DashboardComponent, canActivate: [AuthGuard] },

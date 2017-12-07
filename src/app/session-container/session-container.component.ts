@@ -20,17 +20,15 @@ export class SessionContainerComponent implements OnInit {
   sessionId: Observable<number>;
 
   ngOnInit() {
+    const data = this.route.snapshot.data['session'];
 
-      this.route
-        .params
-        .subscribe( params => {
-          if ( params['id'] !== undefined && params['id'] !== null) {
-            this.sessionService.get(params['id']).subscribe( data => {
-              this.currentSession = data;
-              this.currentSession.date = this.parseStringToDate(data.date.toString());
-            });
-          }
-      });
+    if ( data !== undefined ) {
+      this.currentSession = data;
+      this.currentSession.date = this.parseStringToDate(data.date.toString());
+    } else {
+      this.currentSession = {};
+    }
+
   }
 
   private parseStringToDate(date: string): Date {

@@ -20,3 +20,11 @@ body {
 h1, h2, h3, h4 {
     font-weight: normal;
 }
+
+/* Override colors by using scss variables */
+$color-negative-rating: rgb(28, 91, 184) !default;
+$color-ok-rating: rgb(28, 91, 184) !default;
+$color-positive-rating: #00f !default;
+$color-default-rating: rgb(28, 91, 184) !default;
+
+@import "~angular-star-rating/assets/scss/star-rating";

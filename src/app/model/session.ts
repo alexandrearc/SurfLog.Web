@@ -19,7 +19,7 @@ export class Session {
                 rating: number,
                 beach: Beach) {
         this.id = id;
-        this.description = name;
+        this.description = description;
         this.date = date;
         this.duration = duration;
         this.rating = rating;

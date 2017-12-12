@@ -41,7 +41,7 @@ export class SessionService {
                   item.date,
                   item.duration,
                   item.rating,
-                  item.beachId
+                  item.beach
               );
             });
           })

@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
+import { MaterialModule, MdCoreModule, MdDatepickerModule, MdNativeDateModule, MdListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { StarRatingModule } from 'angular-star-rating';
 import 'hammerjs';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -45,7 +46,10 @@ import { APP_PROVIDERS } from './app.providers';
     MaterialModule,
     MdDatepickerModule,
     MdNativeDateModule,
-    FlexLayoutModule
+    MdListModule,
+    MdCoreModule,
+    FlexLayoutModule,
+    StarRatingModule.forRoot()
   ],
   providers: [
     APP_PROVIDERS

@@ -4,13 +4,15 @@
       <a md-raised-button color="primary" routerLink="/session">Session</a>
       <a md-raised-button color="secondary" routerLink="/login">Logout</a>
   </nav>
-
   <h3>Sessions</h3>
-  <div >
-    <a *ngFor="let session of sessions" [routerLink]="['/session', session.id]">
-      <div fxLayout="row">
-        <h5>{{session.date}}</h5><h5>{{session.rating}}</h5>
+  <md-list flex>
+    <md-list-item class="md-3-line" *ngFor="let session of sessions" [routerLink]="['/session', session.id]">
+      <!-- <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" /> -->
+      <div class="md-list-item-text" layout="column">
+        <h3 >{{ session.beach.name }}</h3>
+        <h4><star-rating-comp [readOnly]="true" [starType]="'svg'" [rating]="session.rating"></star-rating-comp></h4>
+        <p style="font-style: italic">"{{ session.description }}"</p>
       </div>
-    </a>
-  </div>
+    </md-list-item>
+  </md-list>
 </div>

@@ -21,12 +21,17 @@ export class SessionComponent implements OnInit {
     showCondition: boolean;
     conditionLabel: string;
     isNew = false;
+    maxDate: Date;
 
     constructor(private router: Router,
                 private route: ActivatedRoute,
                 private sessionService: SessionService) { }
 
     ngOnInit() {
+        this.maxDate = new Date(new Date().getFullYear(),
+                              new Date().getMonth(),
+                              new Date().getDate());
+
         if (this.session.id === undefined) {
             this.isNew = true;
         } else {

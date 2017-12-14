@@ -3,9 +3,9 @@
     <form name="form" (ngSubmit)="f.form.valid && submit()" #f="ngForm" novalidate fxLayout="column">
         <beach-search (selectBeachEvent)="receiveSelectedBeach($event)" [beach]="currentBeach"></beach-search> 
         <md-form-field>
-            <input mdInput [mdDatepicker]="picker"  name="date" placeholder="Date" [(ngModel)]="session.date" #date="ngModel"/>
+            <input mdInput [mdDatepicker]="picker"  name="date" placeholder="Date" [max]="maxDate" [(ngModel)]="session.date" #date="ngModel"/>
             <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
-            <md-datepicker #picker></md-datepicker>
+            <md-datepicker #picker ></md-datepicker>
         </md-form-field> 
         <md-form-field> 
             <textarea mdInput type="text" name="description" placeholder="Description" [(ngModel)]="session.description" #description="ngModel"></textarea>
